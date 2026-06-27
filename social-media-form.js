@@ -32,7 +32,35 @@ const descriptionTextarea = document.getElementById('description');
 const successOverlay = document.getElementById('successOverlay');
 const successCloseBtn = document.getElementById('successCloseBtn');
 
+// Comments Count Toggle Elements
+const commentsCheckbox = document.getElementById('comments');
+const commentsCountContainer = document.getElementById('commentsCountContainer');
+const commentsCountSelect = document.getElementById('commentsCount');
 
+if (commentsCheckbox && commentsCountContainer && commentsCountSelect) {
+    commentsCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            commentsCountContainer.style.display = 'flex';
+            commentsCountSelect.required = true;
+            commentsCountSelect.value = "20"; // Default to 20 when shown
+        } else {
+            commentsCountContainer.style.display = 'none';
+            commentsCountSelect.required = false;
+            commentsCountSelect.value = ""; // Clear when hidden
+        }
+    });
+}
+
+// Reset listener to return comments count block to default hidden state
+if (form) {
+    form.addEventListener('reset', () => {
+        if (commentsCountContainer) commentsCountContainer.style.display = 'none';
+        if (commentsCountSelect) {
+            commentsCountSelect.required = false;
+            commentsCountSelect.value = "";
+        }
+    });
+}
 
 // Auto-resize Description Textarea based on input content
 if (descriptionTextarea) {
@@ -110,6 +138,7 @@ if (form) {
             stealable: document.getElementById('stealable').checked,
             metadata: document.getElementById('metadata').checked,
             comments: document.getElementById('comments').checked,
+            comments_count: document.getElementById('comments').checked ? (document.getElementById('commentsCount').value || "20") : "",
             transcript: document.getElementById('transcript').checked
         };
 
