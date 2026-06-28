@@ -31,9 +31,9 @@
     <!-- Main Content Panel -->
     <main class="editorial-wrapper main-content">
         <!-- The Questionnaire Card Container -->
-        <div class="form-container">
-            <span class="section-tag" style="margin-bottom: 0.5rem;">KÉRDŐÍV</span>
-            <h2 class="form-title">Social Media Információk</h2>
+        <div class="form-wrapper-outer">
+            <span class="section-tag" style="margin-bottom: 0.5rem; text-align: center; display: block;">KÉRDŐÍV</span>
+            <h2 class="form-title" style="text-align: center;">Social Media Információk</h2>
 
             <!-- Error Banner -->
             <div class="alert-banner" id="errorBanner" role="alert">
@@ -43,80 +43,107 @@
 
             <!-- Questionnaire Form -->
             <form id="socialMediaForm" novalidate>
-                <!-- Category dropdown -->
-                <div class="form-group">
-                    <label for="category">Category / Kategória</label>
-                    <select id="category" name="category" required>
-                        <option value="" disabled selected>Válasszon kategóriát...</option>
-                        <option value="Social Media">Social Media</option>
-                        <option value="News & Blogs">News & Blogs</option>
-                        <option value="Booking & Reviews">Booking & Reviews</option>
-                        <option value="Video Platforms">Video Platforms</option>
-                        <option value="Other">Other / Egyéb</option>
-                    </select>
+                
+                <!-- Island 1: Post URL -->
+                <div class="form-card-island">
+                    <div class="form-section-header">
+                        <i class="bi bi-link-45deg"></i> Post URL / Bejegyzés URL
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="url">Post URL / Bejegyzés URL</label>
+                        <input type="url" id="url" name="url" placeholder="https://facebook.com/posts/..." required />
+                    </div>
                 </div>
 
-                <!-- Social Media Post URL -->
-                <div class="form-group">
-                    <label for="url">Post URL / Bejegyzés URL</label>
-                    <input type="url" id="url" name="url" placeholder="https://facebook.com/posts/..." required />
+                <!-- Island 2: Alapadatok -->
+                <div class="form-card-island">
+                    <div class="form-section-header">
+                        <i class="bi bi-card-list"></i> Alapadatok / Basic Info
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category / Kategória</label>
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>Válasszon kategóriát...</option>
+                            <option value="Destination">Destination</option>
+                            <option value="Program ideas">Program ideas</option>
+                            <option value="Visit instead">Visit instead</option>
+                            <option value="Tips & Tricks">Tips & Tricks</option>
+                            <option value="Tools & Processes">Tools & Processes</option>
+                            <option value="Legal & Politics">Legal & Politics</option>
+                            <option value="Other">Other / Egyéb</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description / Leírás</label>
+                        <textarea id="description" name="description" placeholder="A bejegyzés vagy kampány rövid bemutatása..."></textarea>
+                    </div>
+
+                    <div style="margin-top: 1rem;">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="stealable" name="stealable">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Stealable / Ellopható</span>
+                        </label>
+                    </div>
                 </div>
 
-                <!-- Country input -->
-                <div class="form-group">
-                    <label for="country">Country / Ország</label>
-                    <input type="text" id="country" name="country" placeholder="Magyarország" />
+                <!-- Island 3: Lokáció -->
+                <div class="form-card-island">
+                    <div class="form-section-header">
+                        <i class="bi bi-geo-alt"></i> Földrajzi adatok / Geographical Info
+                    </div>
+                    <div class="form-row form-row--three-cols">
+                        <!-- Country input -->
+                        <div class="form-group">
+                            <label for="country">Country / Ország</label>
+                            <input type="text" id="country" name="country" placeholder="pl. Olaszország" />
+                        </div>
+
+                        <!-- Region input -->
+                        <div class="form-group">
+                            <label for="region">Region / Régió</label>
+                            <input type="text" id="region" name="region" placeholder="pl. Toszkána" />
+                        </div>
+
+                        <!-- City input -->
+                        <div class="form-group">
+                            <label for="city">City / Város</label>
+                            <input type="text" id="city" name="city" placeholder="pl. Firenze" />
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Region input -->
-                <div class="form-group">
-                    <label for="region">Region / Régió</label>
-                    <input type="text" id="region" name="region" placeholder="Pest megye" />
-                </div>
+                <!-- Island 4: Scrape adatok -->
+                <div class="form-card-island">
+                    <div class="form-section-header">
+                        <i class="bi bi-cloud-download"></i> Scrape adatok / Scrape Info
+                    </div>
+                    
+                    <!-- Checkboxes -->
+                    <div class="checkbox-grid">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="metadata" name="metadata">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Meta data / Meta adatok</span>
+                        </label>
 
-                <!-- City input -->
-                <div class="form-group">
-                    <label for="city">City / Város</label>
-                    <input type="text" id="city" name="city" placeholder="Budapest" />
-                </div>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="transcript" name="transcript">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Transcript / Leirat</span>
+                        </label>
 
-                <!-- Description textarea -->
-                <div class="form-group">
-                    <label for="description">Description / Leírás</label>
-                    <textarea id="description" name="description" placeholder="A bejegyzés vagy kampány rövid bemutatása..."></textarea>
-                </div>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="comments" name="comments">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Comments / Kommentek</span>
+                        </label>
+                    </div>
 
-                <!-- Checkboxes -->
-                <div class="checkbox-group">
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="stealable" name="stealable">
-                        <span class="checkmark"></span>
-                        <span class="checkbox-text">Stealable / Ellopható</span>
-                    </label>
-
-                    <div class="checkbox-divider"></div>
-
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="metadata" name="metadata">
-                        <span class="checkmark"></span>
-                        <span class="checkbox-text">Meta data / Meta adatok</span>
-                    </label>
-
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="transcript" name="transcript">
-                        <span class="checkmark"></span>
-                        <span class="checkbox-text">Transcript / Leirat</span>
-                    </label>
-
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="comments" name="comments">
-                        <span class="checkmark"></span>
-                        <span class="checkbox-text">Comments / Kommentek</span>
-                    </label>
-
-                    <div id="commentsSubSection" style="display: none; margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 0.5rem; flex-direction: column; gap: 1rem;">
+                    <div id="commentsSubSection" class="comments-subsection" style="display: none;">
                         <!-- Comments Count -->
-                        <div class="form-group" style="margin-bottom: 0;">
+                        <div class="form-group">
                             <label for="commentsCount">Comments Count / Kommentek száma</label>
                             <select id="commentsCount" name="commentsCount">
                                 <option value="5">5</option>
@@ -150,7 +177,7 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn-nvr btn-nvr--primary" id="submitBtn" style="width: 100%; justify-content: center; gap: 0.6rem; padding: 1rem 2rem;">
+                <button type="submit" class="btn-nvr btn-nvr--primary" id="submitBtn" style="width: 100%; justify-content: center; gap: 0.6rem; padding: 1.1rem 2rem;">
                     <span>Adatok Beküldése</span> <i class="bi bi-send" id="submitIcon"></i>
                 </button>
             </form>
