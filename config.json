@@ -1,3 +1,4 @@
 {
-    "N8N_WH_Social": "https://n8n.nivor.hu/webhook/Social_Media_Form"
+    "N8N_WH_Social": "https://n8n.nivor.hu/webhook/Social_Media_Form",
+    "N8N_WH_SyncNow": "https://n8n.nivor.hu/webhook/instant_data_sync"
 }
